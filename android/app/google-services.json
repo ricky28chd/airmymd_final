@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "1026165744161",
+    "project_id": "airmymd-d78f9",
+    "storage_bucket": "airmymd-d78f9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1026165744161:android:a16b2bf33dc10341ddf960",
+        "android_client_info": {
+          "package_name": "com.project.airmymd"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1026165744161-bk8s4k256omkkvvd77qb9n4ca7nm7u0o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB3orm9X6qJRnoCuXOKzRPKpLsPLmNm9P8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1026165744161-bk8s4k256omkkvvd77qb9n4ca7nm7u0o.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1026165744161-g25jubgnv8gduds61lmp0g0l8uf0v0k8.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.airmymd.app"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

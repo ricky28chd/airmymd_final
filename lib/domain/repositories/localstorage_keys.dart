@@ -1,0 +1,47 @@
+/// LocalKeys used to manage local strings
+abstract class LocalKeys {
+  static const authToken = 'auth-token';
+  static const userId = 'user_id';
+  static const parentId = 'parent_id';
+  static const childId = 'child_id';
+  static const location = 'location';
+  static const latitude = 'latitude';
+  static const longitude = 'longitude';
+  static const userEmail = 'user_email';
+  static const userPhone = 'user_phone';
+  static const firstName = 'first_name';
+  static const middleName = 'middle_name';
+  static const lastName = 'last_name';
+  static const city = 'city';
+  static const state = 'state';
+  static const zip = 'zip';
+  static const height = 'height';
+  static const weight = 'weight';
+  static const gender = 'gender';
+  static const ethnicity = 'ethnicity';
+  static const dob = 'dob';
+  static const maritalStatus = 'maritalStatus';
+  static const medicalHistory = 'medicalHistory';
+  static const surgeries = 'surgeries';
+  static const year = 'year';
+  static const age = 'age';
+  static const sexualHealth = 'sexualHealth';
+  static const habits = 'habits';
+  static const general = 'general';
+  static const skin = 'skin';
+  static const eyes = 'eyes';
+  static const cigarette = 'cigarette';
+  static const tobacco = 'tobacco';
+  static const streetDrug = 'streetDrug';
+  static const needleDrug = 'needleDrug';
+  static const drinkAlcohol = 'drinkAlcohol';
+  static const howMany = 'howMany';
+  static const drinksInDay = 'drinksInDay';
+  static const cutDown = 'cutDown';
+  static const feltGuilty = 'feltGuilty';
+  static const morningDrink = 'morningDrink';
+  static const allergies = 'allergies';
+  static const profileImage = 'profileImage';
+  static const pushNotification = 'pushNotification';
+  static const emailNotification = 'emailNotification';
+}

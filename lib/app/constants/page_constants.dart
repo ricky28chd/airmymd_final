@@ -1,0 +1,185 @@
+var deviceToken = '';
+var countryCode = '';
+String imageBaseUrl = 'https://dev.airmymd.com/api/';
+int notificationCount = 0;
+int unreadMessage = 0;
+int appointmentId = 0;
+List<String> chatImage = [];
+//List<File> multipleNoteImage = [];
+List<String> multipleFinalImages = [];
+
+class PageConstants {
+  static String appName = 'AirMyMD'.toUpperCase();
+  static String kDoctor = 'Doctor'.toUpperCase();
+  static String kRecords = 'Records'.toUpperCase();
+  static const String kFindYour = 'Find your';
+  static const String kStoreYourMedical = 'Store your medical';
+  static const String kNext = 'Next';
+  static const String kSkip = 'Skip';
+  static const String kLogin = 'Login';
+  static const String kLetsGetStarted = 'Lets get started';
+  static const String kContinue = 'Continue';
+  static const String knewToAirMyMd = 'New to airmyMD? ';
+  static const String kforgotPassword = 'Forgot Password? ';
+  static const String kRegister = 'Register';
+  static const String kByLoginYouAcceptOur = 'By login, you accept our ';
+  static const String kTAndD = 'Terms & Conditions';
+  static const String kFillTheInformationToJoinUs =
+      'Fill in your information to join';
+  static const String kAlreadyJoined = 'Already joined? ';
+  static const String kByRegisterYouAcceptOur = 'By register, you accept our ';
+  static const String kVerificationCode = 'Verification code';
+  static const String kWeHaveSentTheCodeToYourMobileAndEmail =
+      'We have sent the code to your Email';
+  static const String kYourLocation = 'Your Location';
+  static const String kPleaseProvideYourLocationForBestMatches =
+      'Please provide your location for best matches ';
+  static const String kVerify = 'Verify';
+  static const String kBuildYourProfile = 'Build Your Profile';
+  static const String kSave = 'Save';
+  static const String kReactionsToMedications = 'Reactions to medications';
+  static const String kFoodAllergies = 'Food Allergies';
+  static const String kAllergies = 'Allergies';
+  static const String kMedicalHistory = 'Medical History';
+  static const String kCheckAllThatApplyToYou = 'Check all that apply to you';
+  static const String kAlcoholDrugProblem = 'Alcohol/Drug problem';
+  static const String kEmphysemaCOPD = 'Emphysema/COPD';
+  static const String kLiverDisease = 'Liver Disease';
+  static const String kBloodClots = 'Blood Clots';
+  static const String kAnemia = 'Anemia';
+  static const String kHeartAttack = 'Heart Attack';
+  static const String kAnxiety = 'Anxiety';
+  static const String kOsteoporosis = 'Osteoporosis';
+  static const String kNeuropathy = 'Neuropathy';
+  static const String kProstateProblem = 'Prostate Problem';
+  static const String kArthritis = 'Arthritis';
+  static const String kAsthma = 'Asthma';
+  static const String kHighBloodPressure = 'High Blood Pressure';
+  static const String kHeartMurmur = 'Heart Murmur';
+  static const String kSeizureDisorder = 'Seizure Disorder';
+  static const String kAtrialFibrillation = 'Atrial Fibrillation';
+  static const String kMigraines = 'Migraines';
+  static const String kHepatitis = 'Hepatitis';
+  static const String kDementia = 'Dementia';
+  static const String kDiabetes = 'Diabetes';
+  static const String kDivertiulosis = 'Diverticulosis';
+  static const String kCancer = 'Cancer';
+  static const String kColonPolyps = 'Colon Polyps';
+  static const String kKidneyDisease = 'Kidney Disease';
+  static const String kHypothyroidismLow = 'Hypothyroidism (low)';
+  static const String kPositiveTB = 'Positive TB';
+  static const String kStroke = 'Stroke';
+  static const String kAbnormalPapTest = 'Abnormal Pap Test';
+  static const String kHighCholesterol = 'High Cholesterol';
+  static const String kSurgeries = 'Surgeries';
+  static const String kHelp = 'Help';
+  static const String kIncludeYearOrAgeAtTimeOfSurgery =
+      'Include year or age at time of surgery';
+  static const String kAppendectomy = 'Appendectomy';
+  static const String kTonsillectomy = 'Tonsillectomy';
+  static const String kCardiacBypassCABG = 'Cardiac Bypass (CABG)';
+  static const String kHerniaRepairE = 'Hernia Repair E';
+  static const String kHysterectomyTotal = 'Hysterectomy-Total';
+  static const String kHysterectomyPartia = 'Hysterectomy- Partial';
+  static const String kGallbladderLaparoscopicTubeLigation =
+      'Gallbladder Laparoscopic Tubal Ligation';
+  static const String kVasectomy = 'Vasectomy';
+  static const String kCataractSurgeryLeft = 'Cataract Surgery Left';
+  static const String kGallbladderOpen = 'Gallbladder Open';
+  static const String kCataractSurgeryRight = 'Cataract Surgery Right';
+  static const String kProstateSurgery = 'Prostate Surgery';
+  static const String kMedications = 'Medications';
+  static const String kListPrescribedAndOverTheCounterMedications =
+      'List prescribed and over-the-counter medications';
+  static const String kSexualHealth = 'Sexual Health';
+  static const String kOnlySelectOne = 'Only select one';
+  static const String kSexuallyActive = 'Sexually Active';
+  static const String kNotCurrentlySexuallyActive =
+      'Not Currently Sexually Active';
+  static const String kNeverSexuallyActive = 'Never Sexually Active';
+  static const String kHealthHabits = 'Health Habits';
+  static const String kExercise = 'Exercise';
+  static const String kNoExercise = 'No Exercise';
+  static const String kMildExercise = 'Mild Exercise';
+  static const String kRegularExercise = 'Regular Exercise';
+  static const String kGeneralHealth = 'General Health';
+  static const String kGeneral = 'General';
+  static const String kFatigue = 'Fatigue';
+  static const String kFever = 'Fever';
+  static const String kWeightGainGreater10lbs = 'Weight Gain > 10lbs';
+  static const String kWeightGainSmaller10lbs = 'Weight Gain < 10lbs';
+  static const String kSkin = 'Skin';
+  static const String kRash = 'Rash';
+  static const String kNailChanges = 'Nail Changes';
+  static const String kNewChangingSkinLesion = 'New/Changing Skin Lesion';
+  static const String kHairLoss = 'Hair Loss';
+  static const String kEyeEarsNoseThroat = 'Eye/Ears/Nose/Throat';
+  static const String kVisionChanges = 'Vision Changes';
+  static const String kDecreasedHearing = 'Decreased Hearing';
+  static const String kEarPain = 'Ear Pain';
+  static const String kRingingInEars = 'Ringing In Ears';
+  static const String kNasalCongestion = 'Nasal Congestion';
+  static const String kNoseBleeds = 'Nose Bleeds';
+  static const String kHoarseVoice = 'Hoarse Voice';
+  static const String kSoreThroat = 'Sore Throat';
+  static const String kSneezing = 'Sneezing';
+  static const String kLumpInNeck = 'Lump In Neck';
+  static const String kTobacco = 'Tobacco';
+  static const String kCigaretteUse = 'Cigarette Use';
+  static const String kNever = 'Never';
+  static const String kFormerSmoker = 'Former Smoker';
+  static const String kQuit = 'Quit';
+  static const String kCurrentSmoker = 'Current Smoker';
+  static const String kOtherTobaccoUse = 'Other Tobacco Use';
+  static const String kPipe = 'Pipe';
+  static const String kCigars = 'Cigars';
+  static const String kChewingTobacco = 'Chewing Tobacco';
+  static const String kAlcohol = 'Alcohol';
+  static const String kDoYouDrinkAlcohol = 'Do you drink alcohol?';
+  static const String kNo = 'No';
+  static const String kYes = 'Yes';
+  static const String k01TimeMonth = '0-1 Time/Month';
+  static const String k24TimeMonth = '2-4 Time/Month';
+  static const String kEveryWeek = 'Every Week';
+  static const String kEachWeekHowMany = 'Each week, how many';
+  static const String kWhenDidYouLastHaveMoreThan4DrinksInOneDay =
+      'When did you last have more than 4 drinks in one day?';
+  static const String kDoYouFeelYouShouldCutDownOnDrinking =
+      'Do you feel you should cut down on drinking?';
+  static const String kHaveYouEverFeltGuiltyAboutDrinking =
+      'Have you ever felt guilty about drinking?';
+  static const String kHaveYouEverHadAMorningDrinkToSteadyYourNerves =
+      'Have you ever had a morning drink to steady your nerves?';
+  static const String kDrugs = 'Drugs';
+  static const String kHaveYouUsedRecreationalOrStreetDrugsWithinTheLast2Years =
+      'Have you used recreational or street drugs within the last 2 years?';
+  static const String kHaveYouEverUsedRecreationalDrugsWithNeedle0 =
+      'Have you ever used recreational drugs with a needle?';
+  static const String kAddInsurance = 'Add Insurance';
+  static const String kUploadInsuranceCard = 'Upload insurance card';
+  static const String kAdd = 'Add';
+  static const String kLetsFindYourDoctor = 'Let’s find\nyour doctor';
+  static const String kSpeciality = 'Speciality';
+  static const String kPrimaryCarePhysician = 'Primary care Physician';
+  static const String kDentist = 'Dentist';
+  static const String kInternists = 'Internists';
+  static const String kOBGYN = 'OBGYN';
+  static const String kSpecialist = 'Specialist';
+  static const String kSinusProblem = 'Sinus Problem';
+  static const String kSelectDate = 'Select Date';
+  static const String kAvailableSlots = 'Available Slots';
+  static const String kReason = 'Reason';
+  static const String kAppointmentFor = 'Appointment for';
+  static const String kSelectCard = 'Select Card';
+  static const String kOrSelectInsurance = 'Or Select Insurance';
+  static const String kPrimary = 'Primary';
+  static const String kMakePayment = 'Make Payment';
+  static const String kThanksForBooking = 'Thanks for booking!';
+  static const String kYouBookedAnAppointmentWith =
+      'You booked an appointment with';
+  static const String kAppointments = 'Appointments';
+  static const googleApiKey = 'AIzaSyBrDJEHY1D5bloa83uVvJN4xo2cXkWVzyE';
+  static const String fieldReq = 'This field is required';
+  static const String numberIsInvalid = 'Card is invalid';
+  static const String pay = 'Validate';
+}
