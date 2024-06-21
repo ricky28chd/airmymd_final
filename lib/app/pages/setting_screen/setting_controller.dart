@@ -1,11 +1,15 @@
 import 'dart:convert';
 
 import 'package:airmymd/app/app.dart';
+import 'package:airmymd/app/pages/show_html_data.dart';
 import 'package:airmymd/device/repositories/device_repositories.dart';
 import 'package:airmymd/domain/domain.dart';
 import 'package:airmymd/domain/repositories/localstorage_keys.dart';
+import 'package:airmymd/web_view_page.dart';
+import 'package:flutter_size/flutter_size.dart';
 // import 'package:flutter_appauth/flutter_appauth.dart';
 import 'package:http/http.dart' as http;
+import 'package:url_launcher/url_launcher.dart';
 
 class UserSettingController extends GetxController {
   UserSettingController(this._userSettingPresenter);
@@ -159,7 +163,34 @@ class UserSettingController extends GetxController {
   final String discoveryUrl =
       'https://idp-prod.prod.ngo.nextgenaws.net/auth/realms/nextgen/protocol/openid-connect/auth/';
 
-  Future<void> epicLogin() async {
+  Future<void> epicLogin(BuildContext context) async {
+    Navigator.push(context,
+        MaterialPageRoute(builder: (context) => const PaitentsLoginScreen()));
+    // if (!await launchUrl(
+    //     Uri.parse(
+    //         'https://nativeapi.nextgen.com/nge/prod/nge-oauth/authorize?client_id=7a84c548-6fee-436e-9a2c-2582f8245cfb&redirect_uri=com.project.airmymd://callback&response_type=code'),
+    //     mode: LaunchMode.inAppWebView)) {
+    //   "==> error in launch ==>".logPrint;
+    // }
+
+    // final result = await http.get(
+    //     Uri.parse(
+    //       'https://nativeapi.nextgen.com/nge/prod/nge-oauth/authorize?client_id=7a84c548-6fee-436e-9a2c-2582f8245cfb&redirect_uri=com.project.airmymd://callback&response_type=code',
+    //     ),
+    //     headers: {'Content-Type': 'application/x-www-form-urlencoded'});
+
+    // // final result = await http.get(Uri.parse(
+    // //     'https://nativeapi.nextgen.com/nge/prod/nge-oauth/authorize/login?sessionId=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzZXNzaW9uSWQiOiIwZTJiNTEyZi0yNmNiLTQ1M2MtOTY3YS1hYzM5YTY4MzQwNDAiLCJyZWRpcmVjdF91cmkiOiJjb20ucHJvamVjdC5haXJteW1kOi8vY2FsbGJhY2siLCJyZXNwb25zZV90eXBlIjoiY29kZSIsInJlc3BvbnNlX21vZGUiOiJxdWVyeSIsInNjb3BlcyI6WyJ1c2VyL0FsbGVyZ3lJbnRvbGVyYW5jZS5yZWFkIiwicGF0aWVudC9BbGxlcmd5SW50b2xlcmFuY2UucmVhZCIsIm9mZmxpbmVfYWNjZXNzIiwicGF0aWVudC9DYXJlUGxhbi5yZWFkIiwidXNlci9DYXJlUGxhbi5yZWFkIiwidXNlci9DYXJlVGVhbS5yZWFkIiwicGF0aWVudC9DYXJlVGVhbS5yZWFkIiwidXNlci9Eb2N1bWVudFJlZmVyZW5jZS5yZWFkIiwicGF0aWVudC9Eb2N1bWVudFJlZmVyZW5jZS5yZWFkIiwidXNlci9Db25kaXRpb24ucmVhZCIsInBhdGllbnQvQ29uZGl0aW9uLnJlYWQiLCJ1c2VyL1BhdGllbnQucmVhZCIsInBhdGllbnQvUGF0aWVudC5yZWFkIiwicGF0aWVudC9EaWFnbm9zdGljUmVwb3J0LnJlYWQiLCJ1c2VyL0RpYWdub3N0aWNSZXBvcnQucmVhZCIsImxhdW5jaC9lbmNvdW50ZXIiLCJmaGlyVXNlciIsInBhdGllbnQvR29hbC5yZWFkIiwidXNlci9Hb2FsLnJlYWQiLCJwYXRpZW50L0ltbXVuaXphdGlvbi5yZWFkIiwidXNlci9JbW11bml6YXRpb24ucmVhZCIsInVzZXIvRGV2aWNlLnJlYWQiLCJwYXRpZW50L0RldmljZS5yZWFkIiwicGF0aWVudC9PYnNlcnZhdGlvbi5yZWFkIiwidXNlci9PYnNlcnZhdGlvbi5yZWFkIiwidXNlci9Mb2NhdGlvbi5yZWFkIiwicGF0aWVudC9Mb2NhdGlvbi5yZWFkIiwicGF0aWVudC9NZWRpY2F0aW9uT3JkZXIucmVhZCIsInVzZXIvTWVkaWNhdGlvbk9yZGVyLnJlYWQiLCJ1c2VyL01lZGljYXRpb25SZXF1ZXN0LnJlYWQiLCJwYXRpZW50L01lZGljYXRpb25SZXF1ZXN0LnJlYWQiLCJ1c2VyL01lZGljYXRpb25TdGF0ZW1lbnQucmVhZCIsInBhdGllbnQvTWVkaWNhdGlvblN0YXRlbWVudC5yZWFkIiwidXNlci9NZWRpY2F0aW9uLnJlYWQiLCJwYXRpZW50L01lZGljYXRpb24ucmVhZCIsIm9ubGluZV9hY2Nlc3MiLCJvcGVuaWQiLCJ1c2VyL09yZ2FuaXphdGlvbi5yZWFkIiwicGF0aWVudC9Pcmdhbml6YXRpb24ucmVhZCIsImxhdW5jaC9wYXRpZW50IiwicGF0aWVudC9QcmFjdGl0aW9uZXJSb2xlLnJlYWQiLCJ1c2VyL1ByYWN0aXRpb25lclJvbGUucmVhZCIsInBhdGllbnQvUHJvY2VkdXJlLnJlYWQiLCJ1c2VyL1Byb2NlZHVyZS5yZWFkIiwidXNlci9Qcm92ZW5hbmNlLnJlYWQiLCJwYXRpZW50L1Byb3ZlbmFuY2UucmVhZCIsInVzZXIvUHJhY3RpdGlvbmVyLnJlYWQiLCJwYXRpZW50L1ByYWN0aXRpb25lci5yZWFkIiwicGF0aWVudC9SZWxhdGVkUGVyc29uLnJlYWQiLCJ1c2VyL1JlbGF0ZWRQZXJzb24ucmVhZCIsInVzZXIvRW5jb3VudGVyLnJlYWQiLCJwYXRpZW50L0VuY291bnRlci5yZWFkIl0sInN0YXRlIjpudWxsLCJjbGllbnRfaWQiOiI3YTg0YzU0OC02ZmVlLTQzNmUtOWEyYy0yNTgyZjgyNDVjZmIiLCJhdWRpZW5jZSI6bnVsbCwiZXhwIjoxNzE4ODcxMDc1LCJjbGllbnRfbmFtZSI6IkFpck15bWQiLCJhcHBfbmFtZSI6IkFpcm15bWQifQ.6duknKylGIqFfYmWIWXlW2Y07kybVKmKIfN7urr3jak'));
+
+    // "==> result: ${result.body}==>".logPrint;
+
+    // Navigator.push(
+    //     context,
+    //     MaterialPageRoute(
+    //         builder: (context) => PaitentsLoginScreen(
+    //               htmlData: result.body,
+    //             )));
+
     /*
     const FlutterAppAuth appAuth = FlutterAppAuth();
 

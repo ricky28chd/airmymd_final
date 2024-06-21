@@ -160,10 +160,9 @@ class _MyAppState extends State<MyApp> {
 
   ThemeData myTheme() {
     return ThemeData(
-  
         fontFamily: 'Avenir',
         appBarTheme: const AppBarTheme(
-    iconTheme: IconThemeData(color: Colors.white),
+            iconTheme: IconThemeData(color: Colors.white),
             color: AppColors.primaryColor,
             centerTitle: true,
             elevation: 0,

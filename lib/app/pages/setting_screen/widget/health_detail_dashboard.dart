@@ -174,7 +174,7 @@ class _HealthDetailDashboardState extends State<HealthDetailDashboard> {
                                     logoImage:
                                         'assets/health_portal_logo/mychart-logo.png',
                                     onTap: () {
-                                      controller.epicLogin();
+                                      controller.epicLogin(context);
                                     }),
                                 SizedBox(
                                   height: Get.height * 0.03,

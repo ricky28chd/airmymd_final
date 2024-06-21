@@ -174,20 +174,20 @@ class UserSettingWidget extends StatelessWidget {
                     size: 18,
                     color: Colors.black,
                   )),
-              // ListTile(
-              //     onTap: () {
-              //       controller.epicLogin();
-              //     },
-              //     contentPadding: const EdgeInsets.only(right: 10),
-              //     title: const Text(
-              //       'EHR',
-              //       style: TextStyles.mediumDark15,
-              //     ),
-              //     trailing: const Icon(
-              //       Icons.arrow_forward_ios,
-              //       size: 18,
-              //       color: Colors.black,
-              //     )),
+              ListTile(
+                  onTap: () {
+                    controller.epicLogin(context);
+                  },
+                  contentPadding: const EdgeInsets.only(right: 10),
+                  title: const Text(
+                    'EHR',
+                    style: TextStyles.mediumDark15,
+                  ),
+                  trailing: const Icon(
+                    Icons.arrow_forward_ios,
+                    size: 18,
+                    color: Colors.black,
+                  )),
               ListTile(
                   onTap: () {
                     NavigateTo.goTosupportScreen();
