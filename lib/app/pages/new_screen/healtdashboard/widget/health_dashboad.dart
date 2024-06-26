@@ -36,18 +36,40 @@ class HealthDashboardWidget extends StatelessWidget {
                         children: [
                           AppSizeBox.height_3,
                           const Text(
-                            'Health Dashboard',
+                            'Doctor Specialty',
                             style: TextStyles.mediumDark25,
                             textScaleFactor: 1.1,
                           ),
                           AppSizeBox.height_3,
                           Row(
                             children: [
-                              const Text(
-                                PageConstants.kSpeciality,
-                                style: TextStyles.darkHeavy18,
+                              Expanded(
+                                child: GlobalButtons().primaryButton(
+                                  text: 'Doctor Speciality',
+                                  onTap: () {
+                                    NavigateTo.goToFindDoctorScreen();
+                                  },
+                                ),
                               ),
-                              const Spacer(),
+                              AppSizeBox.width_3,
+                              Expanded(
+                                child: GlobalButtons().primaryButton(
+                                  text: 'Patient Protal',
+                                  onTap: () {
+                                    NavigateTo.goToallProfilePage();
+                                  },
+                                ),
+                              )
+                            ],
+                          ),
+                          AppSizeBox.height_3,
+                          Row(
+                            children: [
+                              // const Text(
+                              //   PageConstants.kSpeciality,
+                              //   style: TextStyles.darkHeavy18,
+                              // ),
+                              // const Spacer(),
                               InkWell(
                                 onTap: () {
                                   print('dadsadasdasdadadaddadasdadasdasdadas');

@@ -97,6 +97,10 @@ class OtpController extends GetxController {
         var response = await _otpPresenter.registerOtpVerificationModel(
             otp: otpController.text, navigateFrom: navigatedFrom[0]);
         if (response.data != null) {
+          Get.find<Repository>()
+              .saveValue(LocalKeys.userEmail, response.data!.email);
+          Get.find<Repository>()
+              .saveValue(LocalKeys.userPhone, response.data!.phone);
           NavigateTo.goToSetLocationScreen();
           resetAllValues();
         }
