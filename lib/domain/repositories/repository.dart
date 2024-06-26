@@ -12,6 +12,7 @@ import 'package:airmymd/domain/models/last_booking_response.dart';
 import 'package:airmymd/domain/models/login_response.dart';
 import 'package:airmymd/domain/models/logout_response.dart';
 import 'package:airmymd/domain/models/medication_response.dart';
+import 'package:airmymd/domain/models/parent_control_response.dart';
 import 'package:airmymd/domain/models/push_notification_setting.dart';
 import 'package:airmymd/domain/models/read_messages_response.dart';
 import 'package:airmymd/domain/models/read_notification_response.dart';
@@ -1824,6 +1825,34 @@ class Repository {
       return await _deviceRepository.getUserProfile(
         isLoading: isLoading,
         token: token,
+      );
+    }
+  }
+
+  Future<ParentControlResponse> parentControl({
+    required bool isLoading,
+    required String userId,
+  }) async {
+    var token = getStringValue(LocalKeys.authToken);
+    try {
+      var response = await _dataRepository.parentControl(
+        isLoading: isLoading,
+        token: token,
+        userId: userId,
+      );
+      ParentControlResponse? parentControlResponse;
+      if (!response.hasError) {
+        parentControlResponse = parentControlResponseFromJson(response.data);
+        saveValue(LocalKeys.authToken, parentControlResponse.activeUserToken);
+      } else {
+        Utility.showInfoDialog(response, false);
+      }
+      return parentControlResponse!;
+    } catch (e) {
+      return await _deviceRepository.parentControl(
+        isLoading: isLoading,
+        token: token,
+        userId: userId,
       );
     }
   }

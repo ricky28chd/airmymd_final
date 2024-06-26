@@ -37,6 +37,8 @@ class ApiWrapper {
         ///Method to call get type request.
         case Request.get:
           {
+            print(
+                'headers -=-=-=----=-=-=-=--=-=-=--=-=-=-=--=--=-=-==-- $headers');
             var uri = baseUrl + url;
             if (isLoading) Utility.showLoader();
             try {

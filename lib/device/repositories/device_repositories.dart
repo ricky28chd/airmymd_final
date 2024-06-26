@@ -549,4 +549,10 @@ class DeviceRepository extends DomainRepository {
   }) {
     throw UnimplementedError();
   }
+  
+  @override
+  Future parentControl({required bool isLoading, required String token, required String userId,}) {
+    
+    throw UnimplementedError();
+  }
 }

@@ -1,5 +1,6 @@
 import 'package:airmymd/app/app.dart';
 import 'package:airmymd/app/pages/all_profile/all_profile_controller.dart';
+import 'package:airmymd/app/pages/pages.dart';
 import 'package:airmymd/domain/repositories/localstorage_keys.dart';
 import 'package:airmymd/domain/repositories/repository.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -24,6 +25,26 @@ class _AllProfilePageState extends State<AllProfilePage> {
                 ? const SizedBox()
                 : Column(
                     children: [
+                      // GlobalDropDown(
+                      //   items: controller.childUsers
+                      //       .map((user) =>
+                      //           user.childPatientProfile.firstName.toString())
+                      //       .toList(),
+                      //   hintText: 'Switch Account',
+                      //   // errorText: controller.dropDownError.value == ''
+                      //   //     ? null
+                      //   //     : controller.dropDownError.value,
+                      //   dropDownItem: controller.activeUser,
+                      //   onChanged: (value) {
+                      //     var selectedUser = controller.childUsers.firstWhere(
+                      //         (user) =>
+                      //             user.childPatientProfile.firstName == value);
+                      //     controller.updateDropDownValue(selectedUser
+                      //         .childPatientProfile.firstName
+                      //         .toString());
+                      //   },
+                      // ),
+                      AppSizeBox.height_3,
                       // Parent Profile
                       GestureDetector(
                         onTap: () {
@@ -168,7 +189,7 @@ class _AllProfilePageState extends State<AllProfilePage> {
                                   child: CachedNetworkImage(
                                       fit: BoxFit.cover,
                                       errorWidget: (context, url, error) {
-                                        return Icon(Icons.people_sharp);
+                                        return const Icon(Icons.people_sharp);
                                       },
                                       imageUrl: controller
                                           .patientProfile!.profilePhotoUrl
@@ -214,10 +235,147 @@ class _AllProfilePageState extends State<AllProfilePage> {
                         ),
                       ),
                       AppSizeBox.height_3,
+                      GestureDetector(
+                        onTap: () {
+                          Get.defaultDialog(
+                            contentPadding: EdgeInsets.zero,
+                            titlePadding: EdgeInsets.zero,
+                            title: '',
+                            content: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 20),
+                                  child: Row(
+                                    children: [
+                                      const Text(
+                                        'Select Account',
+                                        style: TextStyles.darkHeavy18,
+                                      ),
+                                      const Spacer(),
+                                      GestureDetector(
+                                        onTap: () {
+                                          Get.back();
+                                        },
+                                        child: const Icon(
+                                          Icons.close,
+                                          color: AppColors.greyText,
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                ),
+                                AppSizeBox.height_1,
+                                const Divider(),
+                                Container(
+                                    child: Column(
+                                  children: [
+                                    for (var val in controller.childUsers)
+                                      Column(
+                                        children: [
+                                          GestureDetector(
+                                            onTap: () {
+                                              controller.parentControl(
+                                                  userId:
+                                                      val.childId.toString());
+                                            },
+                                            child: Padding(
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                      horizontal: 20,
+                                                      vertical: 10),
+                                              child: Row(
+                                                children: [
+                                                  Container(
+                                                    height: 50,
+                                                    width: 50,
+                                                    decoration: BoxDecoration(
+                                                        color: AppColors
+                                                            .containerBackground,
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(15)),
+                                                    child: ClipRRect(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(15),
+                                                        child:
+                                                            CachedNetworkImage(
+                                                                fit: BoxFit
+                                                                    .cover,
+                                                                errorWidget:
+                                                                    (context,
+                                                                        url,
+                                                                        error) {
+                                                                  return const Icon(
+                                                                      Icons
+                                                                          .people_sharp);
+                                                                },
+                                                                imageUrl: val
+                                                                    .childPatientProfile
+                                                                    .profilePhotoUrl)),
+                                                  ),
+                                                  AppSizeBox.width_3,
+                                                  Column(
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
+                                                    children: [
+                                                      Text(
+                                                        '${val.childPatientProfile.firstName} ${val.childPatientProfile.lastName}',
+                                                        style: TextStyles
+                                                            .darkHeavy18,
+                                                      ),
+                                                      val.userType == 'user'
+                                                          ? const Text(
+                                                              'Parent',
+                                                              style: TextStyles
+                                                                  .darkMedium14,
+                                                            )
+                                                          : Text(
+                                                              val.userType,
+                                                              style: TextStyles
+                                                                  .darkMedium14,
+                                                            )
+                                                    ],
+                                                  ),
+                                                  const Spacer(),
+                                                  const Icon(
+                                                    Icons.arrow_forward,
+                                                    color:
+                                                        AppColors.primaryColor,
+                                                  )
+                                                ],
+                                              ),
+                                            ),
+                                          ),
+                                          const Divider()
+                                        ],
+                                      ),
+                                  ],
+                                ))
+                              ],
+                            ),
+                          );
+                        },
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 10, vertical: 10),
+                          decoration: BoxDecoration(
+                              color: AppColors.primaryColor,
+                              borderRadius: BorderRadius.circular(50)),
+                          child: const Text(
+                            'Switch Account',
+                            style: TextStyles.whiteBold15,
+                          ),
+                        ),
+                      ),
 
+                      AppSizeBox.height_2,
                       // Family Profile
                       controller.childUsers.isEmpty
-                          ? SizedBox()
+                          ? const SizedBox()
                           : const Text(
                               'Family Member',
                               style: TextStyles.darkBlack15,
@@ -404,15 +562,24 @@ class _AllProfilePageState extends State<AllProfilePage> {
                                             .toString(),
                                         style: TextStyles.darkBlack15,
                                       ),
-                                      Text(
-                                        controller
-                                            .childUsers[index]
-                                            .childPatientProfile
-                                            .userType
-                                            .capitalizeFirst
-                                            .toString(),
-                                        style: TextStyles.black_13_400,
-                                      )
+                                      controller
+                                                  .childUsers[index]
+                                                  .childPatientProfile
+                                                  .userType ==
+                                              'user'
+                                          ? Text(
+                                              'Parent',
+                                              style: TextStyles.black_13_400,
+                                            )
+                                          : Text(
+                                              controller
+                                                  .childUsers[index]
+                                                  .childPatientProfile
+                                                  .userType
+                                                  .capitalizeFirst
+                                                  .toString(),
+                                              style: TextStyles.black_13_400,
+                                            )
                                     ],
                                   ),
                                 ),

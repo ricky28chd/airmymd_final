@@ -77,6 +77,8 @@ class OtpController extends GetxController {
                 response.data!.userData![0].patientProfile!.latitude);
             Get.find<Repository>().saveValue(LocalKeys.longitude,
                 response.data!.userData![0].patientProfile!.longitude);
+            Get.find<Repository>().saveValue(LocalKeys.firstName,
+                response.data!.userData![0].patientProfile!.firstName);
             NavigateTo.goToHealthDashboard();
           }
           resetAllValues();

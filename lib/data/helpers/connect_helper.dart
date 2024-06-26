@@ -1255,4 +1255,18 @@ class ConnectHelper {
       },
     );
   }
+
+  Future<ResponseModel> parentControl({
+     required bool isLoading,
+    required String token,
+    required String userId,
+  })async{
+    var data={
+      'user_id':userId,
+    };
+    return await apiWrapper.makeRequest('switch-account', Request.post, data, isLoading, {
+        'Authorization': 'Bearer $token',
+        "Content-Type": "application/json",
+      },);
+  }
 }
