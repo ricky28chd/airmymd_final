@@ -694,12 +694,14 @@ class BuildProfileController extends GetxController {
     }
   }
 
+  var email;
+  var phone;
   @override
   void onInit() {
-    var email = Get.find<Repository>().getStringValue(LocalKeys.userEmail);
+    email = Get.find<Repository>().getStringValue(LocalKeys.userEmail);
     emailController.text = email;
 
-    var phone = Get.find<Repository>().getStringValue(LocalKeys.userPhone);
+    phone = Get.find<Repository>().getStringValue(LocalKeys.userPhone);
     print(phone);
     phoneController.text = phone;
     if (navigateFrom == 'Setting Screen') {

@@ -238,6 +238,7 @@ class _AllProfilePageState extends State<AllProfilePage> {
                       GestureDetector(
                         onTap: () {
                           Get.defaultDialog(
+                            backgroundColor: Colors.white,
                             contentPadding: EdgeInsets.zero,
                             titlePadding: EdgeInsets.zero,
                             title: '',

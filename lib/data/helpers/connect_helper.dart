@@ -127,6 +127,7 @@ class ConnectHelper {
       'gender': gender,
       'ethnicity': ethnicity,
       'dob': dob,
+      'email': email,
       'marital_status': maritalStatus,
       'phone': pass
     };
