@@ -45,6 +45,7 @@ class _PaitentsLoginScreenState extends State<PaitentsLoginScreen> {
 
                   if (request.url
                       .startsWith('com.project.airmymd://callback')) {
+                    Navigator.of(context).pop();
                     return NavigationDecision.prevent;
                     // return NavigationDecision.prevent;
                   }
