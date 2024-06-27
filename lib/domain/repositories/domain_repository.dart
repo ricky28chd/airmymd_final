@@ -404,4 +404,10 @@ abstract class DomainRepository {
     required bool isLoading,
     required String token,
   });
+
+  Future<dynamic> parentControl({
+     required bool isLoading,
+    required String token,
+    required String userId,
+  });
 }

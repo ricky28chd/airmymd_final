@@ -17,10 +17,10 @@ class GetUserProfileResponse {
       GetUserProfileResponse(
         returnCode: json['returnCode'],
         patientProfile: PatientProfile.fromJson(json['data']),
-        childUsers: json['data']['child_users'] == null
+        childUsers: json['child_users'] == null
             ? []
             : List<ChildUsers>.from(
-                json['data']['child_users'].map((x) => ChildUsers.fromJson(x))),
+                json['child_users'].map((x) => ChildUsers.fromJson(x))),
       );
 }
 

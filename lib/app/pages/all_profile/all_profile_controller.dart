@@ -128,6 +128,33 @@ class AllProfileController extends GetxController {
     update();
   }
 
+  Future<void> parentControl({
+    required String userId,
+  }) async {
+    var response = await _allProfilePresenter.parentControl(
+      isLoading: true,
+      userId: userId,
+    );
+    if (response.returnCode == 1) {
+      getUserProfile(isLoading: false);
+      Get.back();
+      Utility.closeDialog();
+    }
+  }
+
+  var activeUser;
+
+  ///This function will help to update the values of dropdown.
+  void updateDropDownValue(value) {
+    activeUser = value;
+    if (activeUser != null) {
+      var selectedUser = childUsers
+          .firstWhere((user) => user.childPatientProfile.firstName == value);
+      parentControl(userId: selectedUser.childId.toString());
+    }
+    update();
+  }
+
   @override
   void onReady() {
     // TODO: implement onReady

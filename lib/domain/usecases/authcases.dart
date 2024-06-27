@@ -10,6 +10,7 @@ import 'package:airmymd/domain/models/health_habits_response.dart';
 import 'package:airmymd/domain/models/last_booking_response.dart';
 import 'package:airmymd/domain/models/logout_response.dart';
 import 'package:airmymd/domain/models/medication_response.dart';
+import 'package:airmymd/domain/models/parent_control_response.dart';
 import 'package:airmymd/domain/models/push_notification_setting.dart';
 import 'package:airmymd/domain/models/read_messages_response.dart';
 import 'package:airmymd/domain/models/read_notification_response.dart';
@@ -609,4 +610,13 @@ class AuthCases {
     required bool isLoading,
   }) =>
       repository.getUserProfile(isLoading: isLoading);
+
+  Future<ParentControlResponse> parentControl({
+    required bool isLoading,
+    required String userId,
+  }) =>
+      repository.parentControl(
+        isLoading: isLoading,
+        userId: userId,
+      );
 }

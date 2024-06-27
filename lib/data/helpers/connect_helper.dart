@@ -128,7 +128,6 @@ class ConnectHelper {
       'ethnicity': ethnicity,
       'dob': dob,
       'marital_status': maritalStatus,
-      'email': email,
       'phone': pass
     };
     return profileImage.isEmpty
@@ -1248,6 +1247,26 @@ class ConnectHelper {
       'get-profile',
       Request.get,
       null,
+      isLoading,
+      {
+        'Authorization': 'Bearer $token',
+        "Content-Type": "application/json",
+      },
+    );
+  }
+
+  Future<ResponseModel> parentControl({
+    required bool isLoading,
+    required String token,
+    required String userId,
+  }) async {
+    var data = {
+      'user_id': userId,
+    };
+    return await apiWrapper.makeRequest(
+      'switch-account',
+      Request.post,
+      data,
       isLoading,
       {
         'Authorization': 'Bearer $token',

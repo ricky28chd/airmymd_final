@@ -77,6 +77,8 @@ class OtpController extends GetxController {
                 response.data!.userData![0].patientProfile!.latitude);
             Get.find<Repository>().saveValue(LocalKeys.longitude,
                 response.data!.userData![0].patientProfile!.longitude);
+            Get.find<Repository>().saveValue(LocalKeys.firstName,
+                response.data!.userData![0].patientProfile!.firstName);
             NavigateTo.goToHealthDashboard();
           }
           resetAllValues();
@@ -95,6 +97,10 @@ class OtpController extends GetxController {
         var response = await _otpPresenter.registerOtpVerificationModel(
             otp: otpController.text, navigateFrom: navigatedFrom[0]);
         if (response.data != null) {
+          Get.find<Repository>()
+              .saveValue(LocalKeys.userEmail, response.data!.email);
+          Get.find<Repository>()
+              .saveValue(LocalKeys.userPhone, response.data!.phone);
           NavigateTo.goToSetLocationScreen();
           resetAllValues();
         }

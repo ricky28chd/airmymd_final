@@ -1,3 +1,4 @@
+import 'package:airmymd/app/pages/pages.dart';
 import 'package:airmymd/data/data.dart';
 import 'package:airmymd/domain/repositories/domain_repository.dart';
 
@@ -754,5 +755,12 @@ class DataRepository implements DomainRepository {
       isLoading: isLoading,
       token: token,
     );
+  }
+  
+  @override
+  Future<ResponseModel> parentControl({required bool isLoading, required String token, required String userId}) async{
+    return await connectHelper.parentControl(isLoading: isLoading, token: token, userId: userId,);
+    
+   
   }
 }
