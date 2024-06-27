@@ -41,7 +41,10 @@ class _PaitentsLoginScreenState extends State<PaitentsLoginScreen> {
                   "==> 4. ${error.description} ==>".logPrint;
                 },
                 onNavigationRequest: (NavigationRequest request) {
-                  "==> 1. ${request.url} ==>".logPrint;
+                  // "here iam ==> 1. ${request.url} ==>".logPrint;
+                  var uri = Uri.parse(request.url);
+                  String? code = uri.queryParameters['code'];
+                  print('code -=-=-=--=-=-=--=-=-=-=-=- $code');
 
                   if (request.url
                       .startsWith('com.project.airmymd://callback')) {

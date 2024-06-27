@@ -78,6 +78,10 @@ class AllProfileController extends GetxController {
     var response =
         await _allProfilePresenter.getUserProfile(isLoading: isLoading);
     if (response.returnCode == 1) {
+      Get.find<Repository>()
+          .saveValue(LocalKeys.userEmail, response.patientProfile.email);
+      Get.find<Repository>()
+          .saveValue(LocalKeys.userPhone, response.patientProfile.phone);
       Utility.closeLoader();
       patientProfile = response.patientProfile;
       childUsers = response.childUsers;
@@ -89,8 +93,8 @@ class AllProfileController extends GetxController {
     Get.find<Repository>().saveValue(LocalKeys.location, '');
     Get.find<Repository>().saveValue(LocalKeys.latitude, '');
     Get.find<Repository>().saveValue(LocalKeys.longitude, '');
-    Get.find<Repository>().saveValue(LocalKeys.userEmail, '');
-    Get.find<Repository>().saveValue(LocalKeys.userPhone, '');
+    // Get.find<Repository>().saveValue(LocalKeys.userEmail, '');
+    //Get.find<Repository>().saveValue(LocalKeys.userPhone, '');
     Get.find<Repository>().saveValue(LocalKeys.firstName, '');
     Get.find<Repository>().saveValue(LocalKeys.middleName, '');
     Get.find<Repository>().saveValue(LocalKeys.lastName, '');
