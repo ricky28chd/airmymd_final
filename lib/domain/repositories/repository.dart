@@ -1595,6 +1595,7 @@ class Repository {
       }
       return reviewsListResponse!;
     } catch (_) {
+      print('review isssue =====>>>> $_');
       return await _deviceRepository.reviewsList(
         doctorId: doctorId,
         token: token,

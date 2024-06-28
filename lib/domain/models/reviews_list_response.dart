@@ -45,8 +45,9 @@ class Data {
   DoctorProfile? doctorProfile;
 
   factory Data.fromJson(Map<String, dynamic> json) => Data(
-        reviews:
-            List<Review>.from(json["reviews"].map((x) => Review.fromJson(x))),
+        reviews: json["reviews"] == null
+            ? []
+            : List<Review>.from(json["reviews"].map((x) => Review.fromJson(x))),
         doctorProfile: DoctorProfile.fromJson(json["doctor_profile"]),
       );
 
@@ -121,8 +122,9 @@ class Review {
         rating: json["rating"] as String? ?? '',
         review: json["review"] as String? ?? '',
         createdAt: DateTime.parse(json["created_at"]),
-        patientProfileData:
-            DoctorProfile.fromJson(json["patient_profile_data"]),
+        patientProfileData: json["patient_profile_data"] == null
+            ? DoctorProfile()
+            : DoctorProfile.fromJson(json["patient_profile_data"]),
       );
 
   Map<String, dynamic> toJson() => {

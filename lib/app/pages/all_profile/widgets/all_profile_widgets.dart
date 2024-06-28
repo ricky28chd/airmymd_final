@@ -344,7 +344,10 @@ class _AllProfilePageState extends State<AllProfilePage> {
                                                                     .darkMedium14,
                                                               )
                                                             : Text(
-                                                                val.userType,
+                                                                val.userType
+                                                                    .toString()
+                                                                    .capitalizeFirst
+                                                                    .toString(),
                                                                 style: TextStyles
                                                                     .darkMedium14,
                                                               )
