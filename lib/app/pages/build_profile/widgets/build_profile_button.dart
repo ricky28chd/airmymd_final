@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:ffi';
 
 import 'package:airmymd/app/app.dart';
 import 'package:airmymd/app/pages/build_profile/widgets/change_password_screen.dart';
@@ -118,6 +119,47 @@ Widget buildProfileButton(context) {
               //   print('entering hee');
               //   controller.onSaveButtonClicked();
               controller.onSaveButtonClicked();
+            } else {
+              if (controller.firstNameController.text.trim().isEmpty) {
+                controller.firstNameError.value = "First Name can't be empty";
+              }
+              if (controller.lastNameController.text.trim().isEmpty) {
+                controller.lastNameError.value = "Last Name can't be empty";
+              }
+              if (controller.emailController.text.trim().isEmpty) {
+                controller.email.value = "Email can't be empty";
+              }
+              if (controller.phoneController.text.trim().isEmpty) {
+                controller.phoneError.value = "Phone can't be empty";
+              }
+              if (controller.cityController.text.trim().isEmpty) {
+                controller.cityError.value = "City can't be empty";
+              }
+              if (controller.zipController.text.trim().isEmpty) {
+                controller.zipError.value = "Zip can't be empty";
+              }
+              if (controller.heightController.text.trim().isEmpty) {
+                controller.heightError.value = "Height can't be empty";
+              }
+              if (controller.weightController.text.trim().isEmpty) {
+                controller.weightError.value = "Weight can't be empty";
+              }
+              if (controller.dobController.text.trim().isEmpty) {
+                controller.dobError.value = "DOB can't be empty";
+              }
+              if (controller.stateDropDownItem == null) {
+                controller.stateError.value = "State can't be empty";
+              }
+              if (controller.genderDropDownItem == null) {
+                controller.genderError.value = "Gender can't be empty";
+              }
+              if (controller.ethnicityDropDownItem == null) {
+                controller.ethnicityError.value =
+                    "Ethnicity Name can't be empty";
+              }
+              if (controller.maritalStatusDropDownItem == null) {
+                controller.maritalError.value = "Marital Status can't be empty";
+              }
             }
           }),
     );
