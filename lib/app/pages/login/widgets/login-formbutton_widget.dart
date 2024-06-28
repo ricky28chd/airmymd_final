@@ -24,14 +24,13 @@ Widget loginFormButton(BuildContext context) {
         //   child: const Text(PageConstants.kforgotPassword,
         //        style: TextStyles.extraBoldBlue13,),
         // ),
-          AppSizeBox.height_1,
+        AppSizeBox.height_1,
         Wrap(
           direction: Axis.horizontal,
           children: [
             const Text(
               PageConstants.knewToAirMyMd,
               style: AppTextStyle.authenticationPlain,
-              
             ),
             GestureDetector(
               onTap: () {
@@ -47,12 +46,12 @@ Widget loginFormButton(BuildContext context) {
         AppSizeBox.height_5,
         GestureDetector(
           onTap: () {
-             Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => AirmymdWebViewWidget(
-                                  url: 'https://login.airmymd.com/terms',
-                                )));
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => AirmymdWebViewWidget(
+                          url: 'https://dev.airmymd.com/terms',
+                        )));
           },
           child: RichText(
               text: const TextSpan(

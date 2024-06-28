@@ -168,7 +168,7 @@ class _VisidWidetState extends State<VisidWidet> {
                                                                 index][
                                                             'user_visit_doctor_medicine']
                                                         .map((e) =>
-                                                            'https://login.airmymd.com/${e['image']}');
+                                                            'https://dev.airmymd.com/${e['image']}');
 
                                                     List<String>
                                                         converdImagetoList =
@@ -340,7 +340,7 @@ class _VisidWidetState extends State<VisidWidet> {
                                                               child: Padding(
                                                                 padding:
                                                                     const EdgeInsets
-                                                                            .all(
+                                                                        .all(
                                                                         8.0),
                                                                 child: Form(
                                                                   key: controller
@@ -379,7 +379,7 @@ class _VisidWidetState extends State<VisidWidet> {
                                                                               Utility.showLoader();
                                                                               try {
                                                                                 var request = await http.post(
-                                                                                  Uri.parse('https://login.airmymd.com/api/invitations/${store[index]['id'].toString()}'),
+                                                                                  Uri.parse('https://dev.airmymd.com/api/invitations/${store[index]['id'].toString()}'),
                                                                                   body: {
                                                                                     'email_phone': controller.email.text,
                                                                                     'url': 'https://airmymdapp.page.link/visit?id=${store[index]['id']}'

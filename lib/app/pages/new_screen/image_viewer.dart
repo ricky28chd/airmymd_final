@@ -38,7 +38,7 @@ class _ImageViewerState extends State<ImageViewer> {
         itemCount: widget.imageUrls.length,
         onPageChanged: (index) {
           print(
-            'https://login.airmymd.com/${widget.imageUrls[index].toString().trim()}',
+            'https://dev.airmymd.com/${widget.imageUrls[index].toString().trim()}',
           );
           setState(() {
             _currentPage = index;
@@ -66,7 +66,7 @@ class _ImageViewerState extends State<ImageViewer> {
             image: NetworkImage(
               widget.imageUrls[index].toString().startsWith('https:')
                   ? widget.imageUrls[index].toString()
-                  : 'https://login.airmymd.com/${widget.imageUrls[index].toString()}',
+                  : 'https://dev.airmymd.com/${widget.imageUrls[index].toString()}',
             ),
           );
         },

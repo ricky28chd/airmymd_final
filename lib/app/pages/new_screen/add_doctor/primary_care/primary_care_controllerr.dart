@@ -125,7 +125,7 @@ class PrimaryController extends GetxController {
       Utility.showLoader();
       var request = await http.delete(
         Uri.parse(
-          'https://login.airmymd.com/api/speciality-doctor-delete/$id',
+          'https://dev.airmymd.com/api/speciality-doctor-delete/$id',
         ),
         headers: {
           'Authorization':

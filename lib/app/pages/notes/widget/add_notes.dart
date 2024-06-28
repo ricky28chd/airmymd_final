@@ -227,7 +227,7 @@ class AddNoteScreen extends StatelessWidget {
                                             return Container();
                                           },
                                           imageUrl:
-                                              'https://login.airmymd.com/uploads/notes/${controller.a[index]}',
+                                              'https://dev.airmymd.com/uploads/notes/${controller.a[index]}',
                                         ),
                                       ),
                                     ),

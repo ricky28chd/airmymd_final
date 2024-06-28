@@ -51,21 +51,6 @@ class UserSettingWidget extends StatelessWidget {
                       color: Colors.black,
                     )),
               ),
-              ListTile(
-                  onTap: () {
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: (_) => const ArchivedScreen()));
-                  },
-                  contentPadding: const EdgeInsets.only(right: 10),
-                  title: const Text(
-                    'Archived',
-                    style: TextStyles.mediumDark15,
-                  ),
-                  trailing: const Icon(
-                    Icons.arrow_forward_ios,
-                    size: 18,
-                    color: Colors.black,
-                  )),
               const ListTile(
                   onTap: NavigateTo.goToPaymentCardListScreen,
                   contentPadding: EdgeInsets.only(right: 10),
@@ -74,6 +59,20 @@ class UserSettingWidget extends StatelessWidget {
                     style: TextStyles.mediumDark15,
                   ),
                   trailing: Icon(
+                    Icons.arrow_forward_ios,
+                    size: 18,
+                    color: Colors.black,
+                  )),
+              ListTile(
+                  onTap: () {
+                    NavigateTo.goTosupportScreen();
+                  },
+                  contentPadding: const EdgeInsets.only(right: 10),
+                  title: const Text(
+                    'Support',
+                    style: TextStyles.mediumDark15,
+                  ),
+                  trailing: const Icon(
                     Icons.arrow_forward_ios,
                     size: 18,
                     color: Colors.black,
@@ -117,12 +116,26 @@ class UserSettingWidget extends StatelessWidget {
               ),
               ListTile(
                   onTap: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (_) => const ArchivedScreen()));
+                  },
+                  contentPadding: const EdgeInsets.only(right: 10),
+                  title: const Text(
+                    'Archived',
+                    style: TextStyles.mediumDark15,
+                  ),
+                  trailing: const Icon(
+                    Icons.arrow_forward_ios,
+                    size: 18,
+                    color: Colors.black,
+                  )),
+              ListTile(
+                  onTap: () {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
                             builder: (context) => AirmymdWebViewWidget(
-                                  url:
-                                      'https://login.airmymd.com/privacy-policy',
+                                  url: 'https://dev.airmymd.com/privacy-policy',
                                 )));
                     // const url =
                     //     'http://airmymd.smallbizplace.com/privacy-policy';
@@ -147,7 +160,7 @@ class UserSettingWidget extends StatelessWidget {
                         context,
                         MaterialPageRoute(
                             builder: (context) => AirmymdWebViewWidget(
-                                  url: 'https://login.airmymd.com/terms',
+                                  url: 'https://dev.airmymd.com/terms',
                                 )));
                   },
                   contentPadding: const EdgeInsets.only(right: 10),
@@ -174,34 +187,20 @@ class UserSettingWidget extends StatelessWidget {
                     size: 18,
                     color: Colors.black,
                   )),
-              ListTile(
-                  onTap: () {
-                    controller.epicLogin(context);
-                  },
-                  contentPadding: const EdgeInsets.only(right: 10),
-                  title: const Text(
-                    'EHR',
-                    style: TextStyles.mediumDark15,
-                  ),
-                  trailing: const Icon(
-                    Icons.arrow_forward_ios,
-                    size: 18,
-                    color: Colors.black,
-                  )),
-              ListTile(
-                  onTap: () {
-                    NavigateTo.goTosupportScreen();
-                  },
-                  contentPadding: const EdgeInsets.only(right: 10),
-                  title: const Text(
-                    'Help',
-                    style: TextStyles.mediumDark15,
-                  ),
-                  trailing: const Icon(
-                    Icons.arrow_forward_ios,
-                    size: 18,
-                    color: Colors.black,
-                  )),
+              // ListTile(
+              //     onTap: () {
+              //       controller.epicLogin(context);
+              //     },
+              //     contentPadding: const EdgeInsets.only(right: 10),
+              //     title: const Text(
+              //       'EHR',
+              //       style: TextStyles.mediumDark15,
+              //     ),
+              //     trailing: const Icon(
+              //       Icons.arrow_forward_ios,
+              //       size: 18,
+              //       color: Colors.black,
+              //     )),
               logOutTileWidget(context),
             ],
           ),

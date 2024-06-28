@@ -861,7 +861,7 @@ class _ImageViewerScreenState extends State<ImageViewerScreen> {
                   maxScale: PhotoViewComputedScale.covered * 2.0,
                   initialScale: PhotoViewComputedScale.contained,
                   imageProvider: CachedNetworkImageProvider(
-                    'https://login.airmymd.com/${widget.images[index]}',
+                    'https://dev.airmymd.com/${widget.images[index]}',
                   ),
                   errorBuilder: (BuildContext, Object, StackTrace) {
                     return Image.file(File(widget.images[index]),

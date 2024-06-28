@@ -132,35 +132,36 @@ class BookAppointmentController extends GetxController {
   }
 
   void onContinueButtonClicked() {
-    if (selectedSlot.isNotEmpty && userType != null) {
-      if (userType == UserType.Family) {
-        Get.find<Repository>().saveValue(LocalKeys.childId, selectedChildId);
-        if (selectedChildId != null) {
-          NavigateTo.goToPaymentScreen(
-            doctorId: doctorId,
-            bookingDate: DateFormat("yyyy-MM-dd").format(selectedDay),
-            bookingTime: selectedSlot.join('').toString(),
-            reason: reasonController.text,
-            fees: doctorFees ?? '',
-          );
-        } else {
-          Utility.showMessage(
-            'Please select Family member',
-            MessageType.information,
-            () => Utility.closeLoader(),
-            'Okay',
-          );
-        }
-      } else {
-        Get.find<Repository>().saveValue(LocalKeys.childId, '');
-        NavigateTo.goToPaymentScreen(
-          doctorId: doctorId,
-          bookingDate: DateFormat("yyyy-MM-dd").format(selectedDay),
-          bookingTime: selectedSlot.join('').toString(),
-          reason: reasonController.text,
-          fees: doctorFees ?? '',
-        );
-      }
+    if (selectedSlot.isNotEmpty) {
+      // if (userType == UserType.Family) {
+      //   Get.find<Repository>().saveValue(LocalKeys.childId, selectedChildId);
+      //   if (selectedChildId != null) {
+      //     NavigateTo.goToPaymentScreen(
+      //       doctorId: doctorId,
+      //       bookingDate: DateFormat("yyyy-MM-dd").format(selectedDay),
+      //       bookingTime: selectedSlot.join('').toString(),
+      //       reason: reasonController.text,
+      //       fees: doctorFees ?? '',
+      //     );
+      //   } else {
+      //     Utility.showMessage(
+      //       'Please select Family member',
+      //       MessageType.information,
+      //       () => Utility.closeLoader(),
+      //       'Okay',
+      //     );
+      //   }
+      // } else {
+
+      // }
+      Get.find<Repository>().saveValue(LocalKeys.childId, '');
+      NavigateTo.goToPaymentScreen(
+        doctorId: doctorId,
+        bookingDate: DateFormat("yyyy-MM-dd").format(selectedDay),
+        bookingTime: selectedSlot.join('').toString(),
+        reason: reasonController.text,
+        fees: doctorFees ?? '',
+      );
     } else if (selectedSlot.isEmpty) {
       Utility.showMessage(
         'Please select time slot first',
@@ -168,14 +169,15 @@ class BookAppointmentController extends GetxController {
         () => Utility.closeLoader(),
         'Okay',
       );
-    } else if (userType == null) {
-      Utility.showMessage(
-        'Please select User first',
-        MessageType.information,
-        () => Utility.closeLoader(),
-        'Okay',
-      );
     }
+    // else if (userType == null) {
+    //   Utility.showMessage(
+    //     'Please select User first',
+    //     MessageType.information,
+    //     () => Utility.closeLoader(),
+    //     'Okay',
+    //   );
+    // }
   }
 
   @override

@@ -155,8 +155,8 @@ class AddVisitWidget extends StatelessWidget {
                               for (int i = 0;
                                   i < controller.medImgList.length;
                                   i++) {
-                                if (controller.medImgList[i].contains(
-                                    'https://login.airmymd.com/null')) {
+                                if (controller.medImgList[i]
+                                    .contains('https://dev.airmymd.com/null')) {
                                   controller.medImgList.removeAt(i);
                                 }
                               }

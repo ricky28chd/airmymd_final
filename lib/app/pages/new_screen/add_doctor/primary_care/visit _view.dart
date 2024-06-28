@@ -41,7 +41,7 @@ class _UserVisitViewScreenState extends State<UserVisitViewScreen> {
             widget.data[i]["purpose"].toString();
 
         visitController.medImgList
-            .add('https://login.airmymd.com/${widget.data[i]["image"]}');
+            .add('https://dev.airmymd.com/${widget.data[i]["image"]}');
         print(widget.data[i]["image"]);
       }
       print(" ===>> ${visitController.medImgList}");
@@ -244,7 +244,7 @@ class _UserVisitViewScreenState extends State<UserVisitViewScreen> {
                                       i < controller.medImgList.length;
                                       i++) {
                                     if (controller.medImgList[i].contains(
-                                        'https://login.airmymd.com/null')) {
+                                        'https://dev.airmymd.com/null')) {
                                       controller.medImgList.removeAt(i);
                                     }
                                   }

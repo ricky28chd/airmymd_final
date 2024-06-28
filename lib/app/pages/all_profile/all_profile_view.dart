@@ -142,7 +142,7 @@ class AllProfileScreen extends StatelessWidget {
                                         try {
                                           var request = await http.post(
                                             Uri.parse(
-                                                'https://login.airmymd.com/api/share-profile/${Get.find<Repository>().getStringValue(LocalKeys.userId)}'),
+                                                'https://dev.airmymd.com/api/share-profile/${Get.find<Repository>().getStringValue(LocalKeys.userId)}'),
                                             body: {
                                               'email': controller.email.text,
                                             },

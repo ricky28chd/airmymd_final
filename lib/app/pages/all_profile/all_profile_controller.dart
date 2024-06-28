@@ -1,5 +1,6 @@
 import 'package:airmymd/app/constants/page_constants.dart';
 import 'package:airmymd/app/pages/all_profile/all_profile.dart';
+import 'package:airmymd/app/pages/new_screen/healtdashboard/conroller.dart';
 import 'package:airmymd/app/pages/pages.dart';
 import 'package:airmymd/app/utils/utility.dart';
 import 'package:airmymd/domain/models/get_user_profile_response.dart';
@@ -140,6 +141,7 @@ class AllProfileController extends GetxController {
       userId: userId,
     );
     if (response.returnCode == 1) {
+      Get.delete<HealthDashboardController>();
       getUserProfile(isLoading: false);
       Get.back();
       Utility.closeDialog();

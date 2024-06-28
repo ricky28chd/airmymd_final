@@ -79,7 +79,7 @@ class _PrimaryCareWidgetState extends State<PrimaryCareWidget> {
                               return InkWell(
                                 onTap: () async {
                                   Utility.showLoader();
-                                  
+
                                   await controller.getDataById(controller
                                       .storeData['doctors'][index]['id']
                                       .toString());
@@ -124,7 +124,7 @@ class _PrimaryCareWidgetState extends State<PrimaryCareWidget> {
                                                       },
                                                       image:
                                                           CachedNetworkImageProvider(
-                                                        'https://login.airmymd.com/${data[index]['image'].toString()}',
+                                                        'https://dev.airmymd.com/${data[index]['image'].toString()}',
                                                       ),
                                                       fit: BoxFit.cover)),
                                         ),
@@ -490,7 +490,7 @@ class _PrimaryCareWidgetState extends State<PrimaryCareWidget> {
                                         .toString()
                                         .endsWith('g')) {
                                       Get.put(AddDoctorControler()).imagePath =
-                                          'https://login.airmymd.com/${controller.storeDataById['doctor']['image']}'
+                                          'https://dev.airmymd.com/${controller.storeDataById['doctor']['image']}'
                                               .toString();
                                     }
 
@@ -875,7 +875,7 @@ class _PrimaryCareWidgetState extends State<PrimaryCareWidget> {
                                                                                 Utility.showLoader();
                                                                                 try {
                                                                                   var request = await http.post(
-                                                                                    Uri.parse('https://login.airmymd.com/api/invitations/${store[index]['id'].toString()}'),
+                                                                                    Uri.parse('https://dev.airmymd.com/api/invitations/${store[index]['id'].toString()}'),
                                                                                     body: {
                                                                                       'email_phone': controller.email.text,
                                                                                       'url': 'https://airmymdapp.page.link/visit?id=${store[index]['id']}'
@@ -971,7 +971,7 @@ class _PrimaryCareWidgetState extends State<PrimaryCareWidget> {
                                     fit: BoxFit.cover);
                               },
                               image: CachedNetworkImageProvider(
-                                'https://login.airmymd.com/${controller.storeDataById['doctor']['image'].toString()}',
+                                'https://dev.airmymd.com/${controller.storeDataById['doctor']['image'].toString()}',
                               ),
                               fit: BoxFit.cover),
                       shape: BoxShape.circle),

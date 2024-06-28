@@ -396,7 +396,7 @@ class _InvitationViewState extends State<InvitationView> {
                                                                                 Utility.showLoader();
                                                                                 try {
                                                                                   var request = await http.post(
-                                                                                    Uri.parse('https://login.airmymd.com/api/invitations/${store[index]['id'].toString()}'),
+                                                                                    Uri.parse('https://dev.airmymd.com/api/invitations/${store[index]['id'].toString()}'),
                                                                                     body: {
                                                                                       'email_phone': controller.email.text,
                                                                                       'url': 'https://airmymd.page.link/visit?id=${store[index]['id']}'
@@ -476,7 +476,7 @@ class _InvitationViewState extends State<InvitationView> {
                                       fit: BoxFit.cover);
                                 },
                                 image: CachedNetworkImageProvider(
-                                  'https://login.airmymd.com/${controller.storeDataById['doctor']['image'].toString()}',
+                                  'https://dev.airmymd.com/${controller.storeDataById['doctor']['image'].toString()}',
                                 ),
                                 fit: BoxFit.cover),
                         shape: BoxShape.circle),

@@ -385,7 +385,7 @@ class HealthDashboardWidget extends StatelessWidget {
                                                                             .height_1,
                                                                         CachedNetworkImage(
                                                                           imageUrl:
-                                                                              'http://login.airmymd.com/${controller.storeData[index]['logo'].toString()}',
+                                                                              'https://dev.airmymd.com/${controller.storeData[index]['logo'].toString()}',
                                                                           height:
                                                                               45,
                                                                           width:
@@ -425,11 +425,12 @@ class HealthDashboardWidget extends StatelessWidget {
                                               AppSizeBox.width_7,
                                             ],
                                           )
-                                        : Container()
+                                        : Container(),
+                                    AppSizeBox.height_8,
                                   ],
                                 ),
                         ),
-                      )
+                      ),
                     ],
                   )),
             ),

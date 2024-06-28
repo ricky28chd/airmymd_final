@@ -1,4 +1,6 @@
 import 'package:airmymd/app/app.dart';
+import 'package:airmymd/domain/repositories/localstorage_keys.dart';
+import 'package:airmymd/domain/repositories/repository.dart';
 
 class HealthDetailDashboard extends StatefulWidget {
   const HealthDetailDashboard({super.key});
@@ -13,14 +15,48 @@ class _HealthDetailDashboardState extends State<HealthDetailDashboard> {
     return GetBuilder<UserSettingController>(builder: (controller) {
       return Scaffold(
         appBar: AppBar(
-          shadowColor: Colors.transparent,
-          elevation: 0,
-          backgroundColor: AppColors.primaryColor,
-          centerTitle: true,
-          title: const Text(
-            'Health Detail',
-            style: AppTextStyle.appBarHeading,
+          automaticallyImplyLeading: true,
+          title: GestureDetector(
+            onTap: () {
+              NavigateTo.goToSetLocationScreen(navigateFrom: 'findDoctor');
+            },
+            child: Row(
+              children: [
+                Image.asset(
+                  AppImages.locationIcon,
+                  scale: 4,
+                ),
+                AppSizeBox.width_2,
+                SizedBox(
+                  width: Get.width * 0.60,
+                  child: Text(
+                    Get.find<Repository>().getStringValue(LocalKeys.location),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyles.whiteBold15,
+                  ),
+                )
+              ],
+            ),
           ),
+          titleSpacing: 5,
+          actions: [
+            Center(
+              child: GestureDetector(
+                onTap: () {
+                  NavigateTo.goToNotificationListScreen();
+                  controller.readNotification();
+                },
+                child: Image.asset(
+                  notificationCount == 0
+                      ? AppImages.notificationIcon
+                      : AppImages.notificationActiveIcon,
+                  scale: 4,
+                ),
+              ),
+            ),
+            AppSizeBox.width_3
+          ],
         ),
         body: CustomScrollView(slivers: [
           SliverFillRemaining(
@@ -41,18 +77,18 @@ class _HealthDetailDashboardState extends State<HealthDetailDashboard> {
                           children: [
                             AppSizeBox.height_3,
                             const Text(
-                              'Health Dashboard',
+                              'Patient Portal',
                               style: TextStyles.mediumDark25,
                               textScaleFactor: 1.1,
                             ),
                             AppSizeBox.height_3,
                             Row(
                               children: [
-                                const Text(
-                                  'Portal',
-                                  style: TextStyles.darkHeavy18,
-                                ),
-                                const Spacer(),
+                                // const Text(
+                                //   'Portal',
+                                //   style: TextStyles.darkHeavy18,
+                                // ),
+                                //const Spacer(),
                                 InkWell(
                                   onTap: () {
                                     Get.bottomSheet(

@@ -46,29 +46,35 @@ class _AllProfilePageState extends State<AllProfilePage> {
                       // ),
                       AppSizeBox.height_3,
                       // Parent Profile
-                      GestureDetector(
-                        onTap: () {
-                          controller.clearLocalValues();
+
+                      controller.patientProfile!.userType != 'user'
+                          ? SizedBox()
+                          : GestureDetector(
+                              onTap: () {
+                                controller.clearLocalValues();
 //-----------------------------------------
 
-                          Get.find<Repository>().saveValue(LocalKeys.parentId,
-                              controller.patientProfile!.userId.toString());
-                          Get.find<Repository>()
-                              .saveValue(LocalKeys.childId, '');
-                          NavigateTo.goToBuildProfileScreen();
-                        },
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            const Icon(
-                              Icons.add_circle_outline,
-                              color: AppColors.primaryColor,
+                                Get.find<Repository>().saveValue(
+                                    LocalKeys.parentId,
+                                    controller.patientProfile!.userId
+                                        .toString());
+                                Get.find<Repository>()
+                                    .saveValue(LocalKeys.childId, '');
+                                NavigateTo.goToBuildProfileScreen();
+                              },
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: [
+                                  const Icon(
+                                    Icons.add_circle_outline,
+                                    color: AppColors.primaryColor,
+                                  ),
+                                  AppSizeBox.width_1,
+                                  const Text('Add',
+                                      style: TextStyles.primary_14_400)
+                                ],
+                              ),
                             ),
-                            AppSizeBox.width_1,
-                            const Text('Add', style: TextStyles.primary_14_400)
-                          ],
-                        ),
-                      ),
                       InkWell(
                         onTap: () async {
                           controller.clearLocalValues();
@@ -269,7 +275,7 @@ class _AllProfilePageState extends State<AllProfilePage> {
                                 ),
                                 AppSizeBox.height_1,
                                 const Divider(),
-                                Container(
+                                SingleChildScrollView(
                                     child: Column(
                                   children: [
                                     for (var val in controller.childUsers)
@@ -281,73 +287,77 @@ class _AllProfilePageState extends State<AllProfilePage> {
                                                   userId:
                                                       val.childId.toString());
                                             },
-                                            child: Padding(
-                                              padding:
-                                                  const EdgeInsets.symmetric(
-                                                      horizontal: 20,
-                                                      vertical: 10),
-                                              child: Row(
-                                                children: [
-                                                  Container(
-                                                    height: 50,
-                                                    width: 50,
-                                                    decoration: BoxDecoration(
-                                                        color: AppColors
-                                                            .containerBackground,
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(15)),
-                                                    child: ClipRRect(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(15),
-                                                        child:
-                                                            CachedNetworkImage(
-                                                                fit: BoxFit
-                                                                    .cover,
-                                                                errorWidget:
-                                                                    (context,
-                                                                        url,
-                                                                        error) {
-                                                                  return const Icon(
-                                                                      Icons
-                                                                          .people_sharp);
-                                                                },
-                                                                imageUrl: val
-                                                                    .childPatientProfile
-                                                                    .profilePhotoUrl)),
-                                                  ),
-                                                  AppSizeBox.width_3,
-                                                  Column(
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .start,
-                                                    children: [
-                                                      Text(
-                                                        '${val.childPatientProfile.firstName} ${val.childPatientProfile.lastName}',
-                                                        style: TextStyles
-                                                            .darkHeavy18,
-                                                      ),
-                                                      val.userType == 'user'
-                                                          ? const Text(
-                                                              'Parent',
-                                                              style: TextStyles
-                                                                  .darkMedium14,
-                                                            )
-                                                          : Text(
-                                                              val.userType,
-                                                              style: TextStyles
-                                                                  .darkMedium14,
-                                                            )
-                                                    ],
-                                                  ),
-                                                  const Spacer(),
-                                                  const Icon(
-                                                    Icons.arrow_forward,
-                                                    color:
-                                                        AppColors.primaryColor,
-                                                  )
-                                                ],
+                                            child: Container(
+                                              color: Colors.white,
+                                              child: Padding(
+                                                padding:
+                                                    const EdgeInsets.symmetric(
+                                                        horizontal: 20,
+                                                        vertical: 10),
+                                                child: Row(
+                                                  children: [
+                                                    Container(
+                                                      height: 50,
+                                                      width: 50,
+                                                      decoration: BoxDecoration(
+                                                          color: AppColors
+                                                              .containerBackground,
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      15)),
+                                                      child: ClipRRect(
+                                                          borderRadius:
+                                                              BorderRadius.circular(
+                                                                  15),
+                                                          child:
+                                                              CachedNetworkImage(
+                                                                  fit: BoxFit
+                                                                      .cover,
+                                                                  errorWidget:
+                                                                      (context,
+                                                                          url,
+                                                                          error) {
+                                                                    return const Icon(
+                                                                        Icons
+                                                                            .people_sharp);
+                                                                  },
+                                                                  imageUrl: val
+                                                                      .childPatientProfile
+                                                                      .profilePhotoUrl)),
+                                                    ),
+                                                    AppSizeBox.width_3,
+                                                    Column(
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .start,
+                                                      children: [
+                                                        Text(
+                                                          '${val.childPatientProfile.firstName} ${val.childPatientProfile.lastName}',
+                                                          style: TextStyles
+                                                              .darkHeavy18,
+                                                        ),
+                                                        val.userType == 'user'
+                                                            ? const Text(
+                                                                'Parent',
+                                                                style: TextStyles
+                                                                    .darkMedium14,
+                                                              )
+                                                            : Text(
+                                                                val.userType,
+                                                                style: TextStyles
+                                                                    .darkMedium14,
+                                                              )
+                                                      ],
+                                                    ),
+                                                    const Spacer(),
+                                                    const Icon(
+                                                      Icons.arrow_forward,
+                                                      color: AppColors
+                                                          .primaryColor,
+                                                    )
+                                                  ],
+                                                ),
                                               ),
                                             ),
                                           ),

@@ -42,46 +42,46 @@ class _BookAppointmentWidgetState extends State<BookAppointmentWidget> {
               availableSlots(),
               AppSizeBox.height_2,
 
-              const Text(
-                PageConstants.kAppointmentFor,
-                style: TextStyles.greyMainHeading,
-              ),
+              // const Text(
+              //   PageConstants.kAppointmentFor,
+              //   style: TextStyles.greyMainHeading,
+              // ),
 
               /// Select user radio button ====================================
-              Row(
-                children: [
-                  Expanded(
-                    child: ListTile(
-                      visualDensity: const VisualDensity(horizontal: -4.0),
-                      dense: false,
-                      contentPadding: EdgeInsets.zero,
-                      horizontalTitleGap: 0,
-                      title: const Text('Self'),
-                      leading: Radio<UserType>(
-                        activeColor: AppColors.primaryColor,
-                        value: UserType.Self,
-                        groupValue: controller.userType,
-                        onChanged: controller.updateUserType,
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    child: ListTile(
-                      visualDensity: const VisualDensity(horizontal: -4.0),
-                      dense: false,
-                      contentPadding: EdgeInsets.zero,
-                      horizontalTitleGap: 0,
-                      title: const Text('Family'),
-                      leading: Radio<UserType>(
-                        activeColor: AppColors.primaryColor,
-                        value: UserType.Family,
-                        groupValue: controller.userType,
-                        onChanged: controller.updateUserType,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+              // Row(
+              //   children: [
+              //     Expanded(
+              //       child: ListTile(
+              //         visualDensity: const VisualDensity(horizontal: -4.0),
+              //         dense: false,
+              //         contentPadding: EdgeInsets.zero,
+              //         horizontalTitleGap: 0,
+              //         title: const Text('Self'),
+              //         leading: Radio<UserType>(
+              //           activeColor: AppColors.primaryColor,
+              //           value: UserType.Self,
+              //           groupValue: controller.userType,
+              //           onChanged: controller.updateUserType,
+              //         ),
+              //       ),
+              //     ),
+              //     Expanded(
+              //       child: ListTile(
+              //         visualDensity: const VisualDensity(horizontal: -4.0),
+              //         dense: false,
+              //         contentPadding: EdgeInsets.zero,
+              //         horizontalTitleGap: 0,
+              //         title: const Text('Family'),
+              //         leading: Radio<UserType>(
+              //           activeColor: AppColors.primaryColor,
+              //           value: UserType.Family,
+              //           groupValue: controller.userType,
+              //           onChanged: controller.updateUserType,
+              //         ),
+              //       ),
+              //     ),
+              //   ],
+              // ),
               controller.userType == UserType.Self ||
                       controller.userType == null
                   ? const SizedBox()

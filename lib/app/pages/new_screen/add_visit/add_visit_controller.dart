@@ -154,7 +154,7 @@ class AddVisitController extends GetxController {
       Utility.showLoader();
       var request = await http.delete(
           Uri.parse(
-              'https://login.airmymd.com/api/speciality-visit-delete/$storeVisitId'),
+              'https://dev.airmymd.com/api/speciality-visit-delete/$storeVisitId'),
           headers: headers);
       var response = json.decode(request.body);
       if (response['returnCode'] == 1) {
@@ -245,7 +245,7 @@ class AddVisitController extends GetxController {
           var request = http.MultipartRequest(
               'POST',
               Uri.parse(storeVisitId != 0
-                  ? 'https://login.airmymd.com/api/speciality-visit-update/$storeVisitId'
+                  ? 'https://dev.airmymd.com/api/speciality-visit-update/$storeVisitId'
                   : 'https://dev.airmymd.com/api/add-visit/${Get.find<Repository>().getStringValue('specialistId')}'));
 
           request.fields.addAll({
@@ -269,12 +269,12 @@ class AddVisitController extends GetxController {
                     .startsWith('upload')) {
               print('one entering value');
               var response = await http.get(Uri.parse(
-                  'https://login.airmymd.com/${imageList[i].replaceAll('(', '').replaceAll(')', '').replaceAll(' ', '')}'));
+                  'https://dev.airmymd.com/${imageList[i].replaceAll('(', '').replaceAll(')', '').replaceAll(' ', '')}'));
               print('one entering value');
               var image = response.bodyBytes;
               request.files.add(http.MultipartFile.fromBytes('image[$i]', image,
                   filename:
-                      'https://login.airmymd.com/${imageList[i].replaceAll('(', '').replaceAll(')', '')}'));
+                      'https://dev.airmymd.com/${imageList[i].replaceAll('(', '').replaceAll(')', '')}'));
             } else {
               print('one entering value1 new one');
               if (imageList[i].toString().isNotEmpty) {

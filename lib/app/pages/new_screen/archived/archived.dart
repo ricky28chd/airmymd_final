@@ -171,7 +171,7 @@ class _ArchivedScreenState extends State<ArchivedScreen> {
                                                                       height:
                                                                           30,
                                                                       padding: const EdgeInsets
-                                                                              .symmetric(
+                                                                          .symmetric(
                                                                           horizontal:
                                                                               5),
                                                                       value:
@@ -231,7 +231,7 @@ class _ArchivedScreenState extends State<ArchivedScreen> {
                                                                       height:
                                                                           30,
                                                                       padding: const EdgeInsets
-                                                                              .symmetric(
+                                                                          .symmetric(
                                                                           horizontal:
                                                                               5),
                                                                       value:

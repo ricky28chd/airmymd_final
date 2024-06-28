@@ -40,7 +40,7 @@ Widget registerFormButton(context) {
                 context,
                 MaterialPageRoute(
                     builder: (context) => AirmymdWebViewWidget(
-                          url: 'https://login.airmymd.com/terms',
+                          url: 'https://dev.airmymd.com/terms',
                         )));
           },
           child: RichText(

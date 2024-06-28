@@ -213,7 +213,7 @@ class SharedNotesWidget extends StatelessWidget {
                                                                           context)
                                                                       .push(MaterialPageRoute(
                                                                           builder: (_) =>
-                                                                              ImageView(url: 'https://login.airmymd.com/uploads/notes/${finalImages[imageIndex]}')));
+                                                                              ImageView(url: 'https://dev.airmymd.com/uploads/notes/${finalImages[imageIndex]}')));
                                                                 },
                                                                 child:
                                                                     ClipRRect(
@@ -233,7 +233,7 @@ class SharedNotesWidget extends StatelessWidget {
                                                                             child:
                                                                                 CupertinoActivityIndicator());
                                                                       },
-                                                                      imageUrl: 'https://login.airmymd.com/uploads/notes/${finalImages[imageIndex]}'),
+                                                                      imageUrl: 'https://dev.airmymd.com/uploads/notes/${finalImages[imageIndex]}'),
                                                                 ),
                                                               )
                                                             : Container();

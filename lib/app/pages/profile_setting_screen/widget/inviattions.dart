@@ -38,7 +38,7 @@ class _ViewInvitationsState extends State<ViewInvitations> {
   void getData() async {
     try {
       var request = await http.get(
-        Uri.parse('https://login.airmymd.com/api/invitations'),
+        Uri.parse('https://dev.airmymd.com/api/invitations'),
         headers: {
           'Authorization':
               'Bearer ${Get.find<Repository>().getStringValue(LocalKeys.authToken)}',
@@ -133,11 +133,11 @@ class _ViewInvitationsState extends State<ViewInvitations> {
                               onTap: () async {
                                 try {
                                   print(
-                                      'https://login.airmymd.com/api/speciality-visit/${storeData[index].id}');
+                                      'https://dev.airmymd.com/api/speciality-visit/${storeData[index].id}');
                                   Utility.showLoader();
                                   var request = await http.get(
                                       Uri.parse(
-                                          'https://login.airmymd.com/api/speciality-visit/${storeData[index].id}'),
+                                          'https://dev.airmymd.com/api/speciality-visit/${storeData[index].id}'),
                                       headers: {
                                         'Authorization':
                                             'Bearer ${Get.find<Repository>().getStringValue(LocalKeys.authToken)}',
@@ -537,7 +537,7 @@ class _ViewInvitationsState extends State<ViewInvitations> {
                                                                                   onTap: () {
                                                                                     Navigator.of(context).push(MaterialPageRoute(
                                                                                         builder: (_) => ImageView(
-                                                                                              url: 'https://login.airmymd.com/${storeData['image']}',
+                                                                                              url: 'https://dev.airmymd.com/${storeData['image']}',
                                                                                             )));
                                                                                   },
                                                                                   child: CachedNetworkImage(
@@ -546,7 +546,7 @@ class _ViewInvitationsState extends State<ViewInvitations> {
                                                                                     },
                                                                                     height: 150,
                                                                                     width: Get.width,
-                                                                                    imageUrl: 'https://login.airmymd.com/${storeData['image']}',
+                                                                                    imageUrl: 'https://dev.airmymd.com/${storeData['image']}',
                                                                                     placeholder: (context, url) => const CupertinoActivityIndicator(),
                                                                                     fit: BoxFit.cover,
                                                                                   ),
@@ -611,7 +611,7 @@ class _ViewInvitationsState extends State<ViewInvitations> {
                                                             },
                                                             image:
                                                                 CachedNetworkImageProvider(
-                                                              'https://login.airmymd.com/${response['data']["user_visit_doctor"]['doctor']['image'].toString()}',
+                                                              'https://dev.airmymd.com/${response['data']["user_visit_doctor"]['doctor']['image'].toString()}',
                                                             ),
                                                             fit: BoxFit.cover),
                                                     shape: BoxShape.circle),
@@ -708,7 +708,7 @@ class _ViewInvitationsState extends State<ViewInvitations> {
                                         try {
                                           var request = await http.delete(
                                             Uri.parse(
-                                                'https://login.airmymd.com/api/invitation/${storeData[index].id.toString()}'),
+                                                'https://dev.airmymd.com/api/invitation/${storeData[index].id.toString()}'),
                                             headers: {
                                               'Authorization':
                                                   'Bearer ${Get.find<Repository>().getStringValue(LocalKeys.authToken)}',
