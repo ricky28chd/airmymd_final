@@ -10,9 +10,10 @@ class DoctorProfileWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print("\n\nthe user id is : ${Get.find<Repository>().getStringValue(LocalKeys.userId)}\n\n");
+    print(
+        "\n\nthe user id is : ${Get.find<Repository>().getStringValue(LocalKeys.userId)}\n\n");
     return GetBuilder<DoctorProfileController>(builder: (controller) {
-      print('controller value is ${ controller.doctorDetail.profile?.id}');
+      print('controller value is ${controller.doctorDetail.profile?.id}');
       return Padding(
         padding: AppPadding.outerScreenPadding,
         child: SingleChildScrollView(
@@ -150,7 +151,11 @@ class DoctorProfileWidget extends StatelessWidget {
                       ),
                     ),
                     AppSizeBox.height_10,
-                      controller.doctorDetail.profile?.userId.toString() ==Get.find<Repository>().getStringValue(LocalKeys.userId) ? const SizedBox.shrink() : doctorProfileButton(),
+                    controller.doctorDetail.profile?.userId.toString() ==
+                            Get.find<Repository>()
+                                .getStringValue(LocalKeys.userId)
+                        ? const SizedBox.shrink()
+                        : doctorProfileButton(),
                     AppSizeBox.height_5,
                   ],
                 ),

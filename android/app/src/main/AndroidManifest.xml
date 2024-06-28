@@ -33,6 +33,9 @@
         android:label="airmymd_final"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
+
+
+
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -60,6 +63,10 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
+
+             <!-- TODO: Add your Google Maps API key here -->
+        <meta-data android:name="com.google.android.geo.API_KEY"
+               android:value="AIzaSyBrDJEHY1D5bloa83uVvJN4xo2cXkWVzyE"/>
     </application>
     <!-- Required to query activities that can process text, see:
          https://developer.android.com/training/package-visibility and
