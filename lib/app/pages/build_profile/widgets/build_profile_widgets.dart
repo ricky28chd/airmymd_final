@@ -1,8 +1,7 @@
 import 'package:airmymd/app/app.dart';
 
-
 class BuildProfileWidget extends StatelessWidget {
-  const BuildProfileWidget({Key? key}) : super(key: key);
+  const BuildProfileWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
