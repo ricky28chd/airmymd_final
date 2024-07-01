@@ -1,5 +1,8 @@
 import 'package:airmymd/app/app.dart';
+import 'package:airmymd/domain/repositories/localstorage_keys.dart';
+import 'package:airmymd/domain/repositories/repository.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter_size/flutter_size.dart';
 
 class FindDoctorWidget extends StatelessWidget {
   const FindDoctorWidget({Key? key}) : super(key: key);
@@ -108,6 +111,32 @@ class FindDoctorWidget extends StatelessWidget {
                                               return index.isEven
                                                   ? GestureDetector(
                                                       onTap: () {
+                                                        // var findDoctorController =
+                                                        //     Get.find<
+                                                        //         FindDoctorController>();
+                                                        // if (findDoctorController
+                                                        //     .userDefaultLocation
+                                                        //     .trim()
+                                                        //     .isNotEmpty) {
+                                                        //   // NavigateTo.goToSetLocationScreen();
+                                                        //   NavigateTo
+                                                        //       .goToSetLocationScreen(
+                                                        //           navigateFrom:
+                                                        //               'findDoctor');
+                                                        // }
+                                                        if (Get.find<
+                                                                Repository>()
+                                                            .getStringValue(
+                                                                LocalKeys
+                                                                    .location)
+                                                            .trim()
+                                                            .isEmpty) {
+                                                          NavigateTo
+                                                              .goToSetLocationScreen(
+                                                                  navigateFrom:
+                                                                      'findDoctor');
+                                                          return;
+                                                        }
                                                         NavigateTo
                                                             .goToGoogleMapScreen(
                                                           specialization: controller
@@ -226,6 +255,19 @@ class FindDoctorWidget extends StatelessWidget {
                                             return index.isOdd
                                                 ? GestureDetector(
                                                     onTap: () {
+                                                      if (Get.find<Repository>()
+                                                          .getStringValue(
+                                                              LocalKeys
+                                                                  .location)
+                                                          .trim()
+                                                          .isEmpty) {
+                                                        NavigateTo
+                                                            .goToSetLocationScreen(
+                                                                navigateFrom:
+                                                                    'findDoctor');
+                                                        return;
+                                                      }
+
                                                       NavigateTo
                                                           .goToGoogleMapScreen(
                                                         specialization: controller
